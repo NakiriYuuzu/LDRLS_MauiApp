@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
+             x:DataType="viewModel:LoginViewModel"
+             x:Class="LDRLS_MauiApp.Views.LoginPage">
+    <ContentPage.Content>
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            
+            <!-- 將 ActivityIndicator 放置在一個能覆蓋整個 Grid 的新層中 -->
+            <ActivityIndicator Grid.Row="0" Grid.RowSpan="2" 
+                               IsRunning="{Binding IsLoading}" 
+                               IsVisible="{Binding IsLoading}" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+
+            <Image Grid.Row="0" 
+                   Source="icon.png" 
+                   Aspect="AspectFit" 
+                   HeightRequest="100" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
+
+                <Label Text="Log In To LDRLS_App" FontSize="20" TextColor="Black" FontAttributes="Bold"
+                       Margin="0,0,0,20"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Your Account" />
+
+                <Entry Text="{Binding Acc}" Placeholder="account" Keyboard="Plain"  />
+
+                <Label Text="Password" />
+
+                <Entry Text="{Binding Pwd}" Placeholder="password" IsPassword="True" />
+
+                <Label Text="Forgot password?" HorizontalOptions="End" TextColor="Gray" FontSize="Small" />
+
+                <Button Text="Log In" 
+                        Command="{Binding LoginOnCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        BackgroundColor="#e8bc65" 
+                        Margin="0,10,0,0" />
+
+                <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="New User? " TextColor="Gray" />
+                            <Span Text="Create Account" TextColor="#7d87f1">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CreateAccountOnCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

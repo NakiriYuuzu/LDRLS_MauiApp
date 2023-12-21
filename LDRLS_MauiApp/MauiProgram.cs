@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using LDRLS_MauiApp.Services;
 using Microsoft.Extensions.Logging;
 
 namespace LDRLS_MauiApp;
@@ -11,6 +13,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseMauiCommunityToolkitCore()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -20,7 +23,14 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+        
+        // Dependency Injection
+        builder.Services.AddSingleton<HttpClient>();
+        builder.Services.AddTransient<ApiService>();
 
+        var app = builder.Build();
+        ServiceHelper.Initialize(app.Services);
+        
         return builder.Build();
     }
 }

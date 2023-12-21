@@ -1,7 +1,7 @@
 # LDRLS_App
 
 ## Features
-- [ ] Login
+- [x] Login
 - [ ] Register
 - [ ] Forgot Password
 - [ ] Home
