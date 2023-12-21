@@ -4,9 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:LDRLS_MauiApp.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Title="LDRLS_MauiApp">
-
+    Background="{StaticResource PrimaryBrush}">
+    
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"

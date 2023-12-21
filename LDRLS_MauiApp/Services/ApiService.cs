@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using LDRLS_MauiApp.Commons.Exceptions;
-using LDRLS_MauiApp.Models.Responses;
+using LDRLS_MauiApp.Models.Response;
 using Newtonsoft.Json;
 
 namespace LDRLS_MauiApp.Services;

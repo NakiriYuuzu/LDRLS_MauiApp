@@ -1,4 +1,4 @@
-﻿using LDRLS_MauiApp.Models.Responses;
+﻿using LDRLS_MauiApp.Models.Response;
 
 namespace LDRLS_MauiApp.Commons.Exceptions;
 
