@@ -30,9 +30,8 @@ public static class MauiProgram
         builder.Services.AddCommunityToolkitDialogs();
         
         // Dependency Injection
-        builder.Services.AddTransient<AppShell>();
         builder.Services.AddSingleton<HttpClient>();
-        
+        builder.Services.AddSingleton<IRouteService, RouteService>();
         builder.Services.AddTransient<CommunityToolkitDialogService>();
         builder.Services.AddTransient<ApiService>();
 
