@@ -31,7 +31,6 @@ public static class MauiProgram
         
         // Dependency Injection
         builder.Services.AddSingleton<HttpClient>();
-        builder.Services.AddSingleton<IRouteService, RouteService>();
         builder.Services.AddTransient<CommunityToolkitDialogService>();
         builder.Services.AddTransient<ApiService>();
 
