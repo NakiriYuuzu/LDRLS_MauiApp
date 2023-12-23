@@ -59,6 +59,6 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
     private void CreateAccountOn()
     {
         Console.WriteLine("CreateAccountOnClicked");
-        Shell.Current.GoToAsync(Routes.HomePage.ToString());
+        Shell.Current.GoToAsync(Routes.SignUpPage.ToString());
     }
 }

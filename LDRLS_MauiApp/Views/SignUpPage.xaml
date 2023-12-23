@@ -3,8 +3,56 @@
 <uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                            xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
                             x:Class="LDRLS_MauiApp.Views.SignUpPage">
-    
-    <Label Text="This Is SignUp Page." />
+
+    <ScrollView>
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <!-- 將 ActivityIndicator 放置在一個能覆蓋整個 Grid 的新層中 -->
+            <ActivityIndicator Grid.Row="0" Grid.RowSpan="2"
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               ZIndex="1000"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+
+            <Image Grid.Row="0"
+                   Source="logo.png"
+                   Aspect="AspectFit"
+                   HeightRequest="100"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
+                <Label Text="SignUp To LDRLS_App"
+                       FontSize="20"
+                       FontAttributes="
+                   Bold" Margin="0,0,0,20"
+                       HorizontalOptions="Center" />
+
+                <material:TextField Title="Your Name" Text="{Binding }" />
+                <material:TextField Title="Your Email" Text="{Binding Acc}" Keyboard="Email" />
+                <material:TextField Title="Your Phone" Text="{Binding Acc}" Keyboard="Telephone" />
+                <material:TextField Title="Your Grade" Text="{Binding Acc}" />
+                <material:TextField Title="Your Account" Text="{Binding Acc}" />
+                <material:TextField Title="Your Password" Text="{Binding Pwd}" IsPassword="True" />
+                <material:TextField Title="Confirm Password" Text="{Binding }" IsPassword="True" />
+
+                <Button Text="Log In"
+                        Command="{Binding LoginOnCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        BackgroundColor="#e8bc65"
+                        StyleClass="ElevatedButton"
+                        Margin="0,10,0,0" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 
 </uranium:UraniumContentPage>
