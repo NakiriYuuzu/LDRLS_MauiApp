@@ -3,12 +3,31 @@
     x:Class="LDRLS_MauiApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:local="clr-namespace:LDRLS_MauiApp.Views"
+    FlyoutBehavior="Disabled"
     Background="{StaticResource PrimaryBrush}">
     
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="LoginPage" />
+    
+    <TabBar>
+        <Tab Title="Home" Icon="{x:Static i:MaterialRound.Home}">
+            <ShellContent
+                Icon="{x:Static i:MaterialRound.Home}"
+                Title="Home"
+                ContentTemplate="{DataTemplate local:HomePage}"
+                Route="HomePage" />
+        </Tab>
+        <Tab Title="Register" Icon="{x:Static i:MaterialRound.Home}">
+            <ShellContent
+                Icon="{x:Static i:MaterialRound.Home}"
+                Title="Register"
+                ContentTemplate="{DataTemplate local:SignUpPage}"
+                Route="SignUpPage" />
+        </Tab>
+    </TabBar>
 
 </Shell>

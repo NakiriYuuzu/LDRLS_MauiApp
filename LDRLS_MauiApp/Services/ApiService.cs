@@ -35,11 +35,18 @@ public class ApiService(HttpClient client)
             {
                 throw new UnauthorizedAccessException("Unauthorized");
             }
+            case HttpStatusCode.BadRequest:
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                var badRequestResponse = JsonConvert.DeserializeObject<Response>(body, _serializerSettings);
+                if (badRequestResponse != null) throw new ApiException(badRequestResponse, "404");
+                throw new InvalidOperationException();
+            }
             case HttpStatusCode.Conflict:
             {
                 var body = await response.Content.ReadAsStringAsync();
                 var conflictResponse = JsonConvert.DeserializeObject<Response>(body, _serializerSettings);
-                if (conflictResponse != null) throw new ConflictException(conflictResponse);
+                if (conflictResponse != null) throw new ApiException(conflictResponse, "409");
                 throw new InvalidOperationException();
             }
             default:

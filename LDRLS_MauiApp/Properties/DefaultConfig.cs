@@ -11,4 +11,5 @@ public struct DefaultConfig
     // Api
     private const string ApiUrl = "http://192.168.31.74:8080/";
     internal const string ApiLogin = $"{ApiUrl}login";
+    internal const string ApiUser = $"{ApiUrl}user";
 }

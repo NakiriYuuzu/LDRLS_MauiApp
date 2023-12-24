@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                    xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                    xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                    Title="Home"
                     x:Class="LDRLS_MauiApp.Views.HomePage">
     
-    <Label Text="This Is Home Page." />
+    <Button Text="This Is Home Page." StyleClass="TextButton" />
 
-</uranium:UraniumContentPage>
+</u:UraniumContentPage>

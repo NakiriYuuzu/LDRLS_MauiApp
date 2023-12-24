@@ -5,6 +5,8 @@
                             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
                             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
                             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
+                            Title="Register"
+                            x:DataType="viewModel:SignUpViewModel"
                             x:Class="LDRLS_MauiApp.Views.SignUpPage">
 
     <ScrollView>
@@ -36,19 +38,18 @@
                    Bold" Margin="0,0,0,20"
                        HorizontalOptions="Center" />
 
-                <material:TextField Title="Your Name" Text="{Binding }" />
-                <material:TextField Title="Your Email" Text="{Binding Acc}" Keyboard="Email" />
-                <material:TextField Title="Your Phone" Text="{Binding Acc}" Keyboard="Telephone" />
-                <material:TextField Title="Your Grade" Text="{Binding Acc}" />
+                <material:TextField Title="Your Name" Text="{Binding Name}" />
+                <material:TextField Title="Your Email" Text="{Binding Email}" Keyboard="Email" />
+                <material:TextField Title="Your Phone" Text="{Binding Phone}" Keyboard="Telephone" />
+                <material:TextField Title="Your Grade" Text="{Binding Grade}" />
                 <material:TextField Title="Your Account" Text="{Binding Acc}" />
                 <material:TextField Title="Your Password" Text="{Binding Pwd}" IsPassword="True" />
-                <material:TextField Title="Confirm Password" Text="{Binding }" IsPassword="True" />
+                <material:TextField Title="Confirm Password" Text="{Binding PwdConfirm}" IsPassword="True" />
 
                 <Button Text="Log In"
-                        Command="{Binding LoginOnCommand}"
+                        Command="{Binding SignUpOnCommand}"
                         IsEnabled="{Binding IsEnabled}"
-                        BackgroundColor="#e8bc65"
-                        StyleClass="ElevatedButton"
+                        StyleClass="FilledButton"
                         Margin="0,10,0,0" />
 
             </VerticalStackLayout>

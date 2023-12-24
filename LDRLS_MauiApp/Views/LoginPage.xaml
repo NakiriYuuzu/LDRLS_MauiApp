@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                            xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-                            xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                            xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
                             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
+                            x:Name="ThisPage"
                             x:DataType="viewModel:LoginViewModel"
                             x:Class="LDRLS_MauiApp.Views.LoginPage">
 
@@ -31,29 +32,42 @@
 
         <VerticalStackLayout Grid.Row="1" Spacing="10">
 
-            <Label Text="Log In To LDRLS_App" 
-                   FontSize="20" 
-                   FontAttributes="
-                   Bold" Margin="0,0,0,20"
-                   HorizontalOptions="Center" />
+            <Label 
+                Text="Log In To LDRLS_App" 
+                FontSize="20" 
+                FontAttributes="Bold" 
+                Margin="0,0,0,20"
+                HorizontalOptions="Center" />
 
-            <material:TextField Title="Your Account" Text="{Binding Acc}" />
+            <m:TextField 
+                Title="Your Account" 
+                Text="{Binding Acc}" />
             
-            <material:TextField Title="Your Password" Text="{Binding Pwd}" IsPassword="True" />
-
-            <Label Text="Forgot password?" HorizontalOptions="End" TextColor="Gray" FontSize="Small" />
+            <m:TextField 
+                Title="Your Password"
+                Text="{Binding Pwd}" 
+                IsPassword="True" />
+            
+            <Button 
+                Text="Forgot password?" 
+                Command="{Binding ForgotPasswordOnCommand}" 
+                FontSize="Small" 
+                HorizontalOptions="End" 
+                StyleClass="TextButton"
+                Margin="0"
+                Padding="0" />
 
             <Button Text="Log In"
                     Command="{Binding LoginOnCommand}"
                     IsEnabled="{Binding IsEnabled}"
-                    BackgroundColor="#e8bc65"
+                    StyleClass="FilledButton"
                     Margin="0,10,0,0" />
 
-            <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+            <Label HorizontalOptions="CenterAndExpand" Margin="0,8,0,0">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="New User? " TextColor="Gray" />
-                        <Span Text="Create Account" TextColor="#7d87f1">
+                        <Span Text="New User? " TextColor="{StaticResource OnSurface}" Style="{StaticResource SpanHint}" />
+                        <Span Text="Create Account" Style="{StaticResource SpanPrimary}">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CreateAccountOnCommand}" />
                             </Span.GestureRecognizers>
@@ -65,4 +79,4 @@
         </VerticalStackLayout>
     </Grid>
 
-</uranium:UraniumContentPage>
+</u:UraniumContentPage>

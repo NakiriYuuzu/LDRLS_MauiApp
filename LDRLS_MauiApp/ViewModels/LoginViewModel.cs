@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LDRLS_MauiApp.Commons.Exceptions;
 using LDRLS_MauiApp.Models;
-using LDRLS_MauiApp.Models.Requests;
+using LDRLS_MauiApp.Models.Request;
 using LDRLS_MauiApp.Models.Response;
 using LDRLS_MauiApp.Properties;
 using LDRLS_MauiApp.Services;
@@ -23,6 +23,12 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
         IsEnabled = !isLoading;
     }
 
+    private void Clear()
+    {
+        Acc = string.Empty;
+        Pwd = string.Empty;
+    }
+
     [RelayCommand]
     private async Task LoginOn()
     {
@@ -40,25 +46,34 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
             var request = new LoginRequest { Account = Acc, Password = Pwd };
             var result = await apiService.PostAsync<LoginResponse>(DefaultConfig.ApiLogin, request);
             if (result.Success) await SecureStorage.SetAsync(DefaultConfig.StorageToken, result.Result.Token);
-            await Shell.Current.GoToAsync(Routes.HomePage.ToString());
+            
+            Clear();
             SetLoading(false);
+            await RouteService.GoToAsync(Routes.HomePage);
         }
-        catch (ConflictException e)
+        catch (ApiException e)
         {
-            await dialogService.ConfirmAsync("Login Failed", e.Message);
+            Clear();
             SetLoading(false);
+            await dialogService.ConfirmAsync("Sign Up Failed", $"{e.Message}: {e.ApiResponse.Result}");
         }
         catch (Exception e)
         {
-            await dialogService.ConfirmAsync("Login Failed", e.Message);
+            Clear();
             SetLoading(false);
+            await dialogService.ConfirmAsync("Login Failed", e.Message);
         }
     }
 
     [RelayCommand]
-    private void CreateAccountOn()
+    private async Task CreateAccountOn()
     {
-        Console.WriteLine("CreateAccountOnClicked");
-        Shell.Current.GoToAsync(Routes.SignUpPage.ToString());
+        await RouteService.GoToAsync(Routes.SignUpPage);
+    }
+
+    [RelayCommand]
+    private async Task ForgotPasswordOn()
+    {
+        await dialogService.ConfirmAsync("Forgot Password", "Not Implemented Yet.");
     }
 }

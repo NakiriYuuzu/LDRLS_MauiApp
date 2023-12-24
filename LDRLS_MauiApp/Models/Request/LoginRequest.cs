@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace LDRLS_MauiApp.Models.Requests;
+namespace LDRLS_MauiApp.Models.Request;
 
 public class LoginRequest
 {
