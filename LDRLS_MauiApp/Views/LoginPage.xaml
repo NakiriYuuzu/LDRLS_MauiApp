@@ -5,7 +5,9 @@
                             xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
                             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
                             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
-                            x:Name="ThisPage"
+                            Title="Sign In"
+                            Shell.NavBarIsVisible="False"
+                            Shell.TabBarIsVisible="False"
                             x:DataType="viewModel:LoginViewModel"
                             x:Class="LDRLS_MauiApp.Views.LoginPage">
 

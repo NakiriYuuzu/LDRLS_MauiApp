@@ -3,31 +3,45 @@
     x:Class="LDRLS_MauiApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
     xmlns:local="clr-namespace:LDRLS_MauiApp.Views"
     FlyoutBehavior="Disabled"
     Background="{StaticResource PrimaryBrush}">
     
     <ShellContent
+        Title="Loading"
+        ContentTemplate="{DataTemplate local:LoadingPage}"
+        Route="LoadingPage"
+        Shell.NavBarIsVisible="False" 
+        Shell.TabBarIsVisible="False" />
+    
+    <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
+        ContentTemplate="{DataTemplate local:LoginPage}" 
+        Route="LoginPage" 
+        Shell.NavBarIsVisible="False" 
+        Shell.TabBarIsVisible="False" />
+    
+    <ShellContent
+        Title="Register"
+        ContentTemplate="{DataTemplate local:SignUpPage}" 
+        Route="SignUpPage" 
+        Shell.TabBarIsVisible="False" />
     
     <TabBar>
-        <Tab Title="Home" Icon="{x:Static i:MaterialRound.Home}">
+        <Tab Title="Home" Icon="home_icon.svg">
             <ShellContent
-                Icon="{x:Static i:MaterialRound.Home}"
+                Icon="home_icon.svg"
                 Title="Home"
                 ContentTemplate="{DataTemplate local:HomePage}"
                 Route="HomePage" />
+
         </Tab>
-        <Tab Title="Register" Icon="{x:Static i:MaterialRound.Home}">
+        <Tab Title="Settings" Icon="home_icon.svg">
             <ShellContent
-                Icon="{x:Static i:MaterialRound.Home}"
-                Title="Register"
-                ContentTemplate="{DataTemplate local:SignUpPage}"
-                Route="SignUpPage" />
+                Icon="home_icon.svg"
+                Title="Settings"
+                ContentTemplate="{DataTemplate local:HomePage}"
+                Route="settings" />
         </Tab>
     </TabBar>
-
 </Shell>

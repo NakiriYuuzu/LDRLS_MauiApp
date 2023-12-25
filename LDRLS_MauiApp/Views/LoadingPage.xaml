@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                      x:Class="LDRLS_MauiApp.Views.LoadingPage">
+    <ContentPage.Content>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+            <ActivityIndicator IsRunning="True" />
+            <Label Text="Checking authentication" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</u:UraniumContentPage>

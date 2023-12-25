@@ -58,6 +58,7 @@ public class ApiService(HttpClient client)
     {
         try
         {
+            await SetBearerTokenAsync();
             var response = await client.GetAsync(uri);
             return await ParseResponseAsync<T>(response);
         }
@@ -72,6 +73,7 @@ public class ApiService(HttpClient client)
     {
         try
         {
+            await SetBearerTokenAsync();
             var response = await client.GetAsync($"{uri}/{param}");
             return await ParseResponseAsync<T>(response);
         }
@@ -86,9 +88,27 @@ public class ApiService(HttpClient client)
     {
         try
         {
+            await SetBearerTokenAsync();
             var serializedEntity = JsonConvert.SerializeObject(input, _serializerSettings);
             var content = new StringContent(serializedEntity, System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync(uri, content);
+            return await ParseResponseAsync<T>(response);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("ERROR:" + e.Message);
+            throw;
+        }
+    }
+    
+    public async Task<T> PutAsync<T>(string uri, object input)
+    {
+        try
+        {
+            await SetBearerTokenAsync();
+            var serializedEntity = JsonConvert.SerializeObject(input, _serializerSettings);
+            var content = new StringContent(serializedEntity, System.Text.Encoding.UTF8, "application/json");
+            var response = await client.PutAsync(uri, content);
             return await ParseResponseAsync<T>(response);
         }
         catch (Exception e)
@@ -102,6 +122,7 @@ public class ApiService(HttpClient client)
     {
         try
         {
+            await SetBearerTokenAsync();
             await client.DeleteAsync(uri);
         }
         catch (Exception e)

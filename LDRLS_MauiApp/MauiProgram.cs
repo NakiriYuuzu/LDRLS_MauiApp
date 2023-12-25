@@ -30,6 +30,7 @@ public static class MauiProgram
         builder.Services.AddCommunityToolkitDialogs();
         
         // Dependency Injection
+        builder.Services.AddSingleton<AppShell>();
         builder.Services.AddSingleton<HttpClient>();
         builder.Services.AddSingleton<CommunityToolkitDialogService>();
         

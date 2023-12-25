@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                            xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-                            xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                            xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                            xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
                             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
                             Title="Register"
                             x:DataType="viewModel:SignUpViewModel"
@@ -38,13 +39,13 @@
                    Bold" Margin="0,0,0,20"
                        HorizontalOptions="Center" />
 
-                <material:TextField Title="Your Name" Text="{Binding Name}" />
-                <material:TextField Title="Your Email" Text="{Binding Email}" Keyboard="Email" />
-                <material:TextField Title="Your Phone" Text="{Binding Phone}" Keyboard="Telephone" />
-                <material:TextField Title="Your Grade" Text="{Binding Grade}" />
-                <material:TextField Title="Your Account" Text="{Binding Acc}" />
-                <material:TextField Title="Your Password" Text="{Binding Pwd}" IsPassword="True" />
-                <material:TextField Title="Confirm Password" Text="{Binding PwdConfirm}" IsPassword="True" />
+                <m:TextField Title="Your Name" Text="{Binding Name}" />
+                <m:TextField Title="Your Email" Text="{Binding Email}" Keyboard="Email" />
+                <m:TextField Title="Your Phone" Text="{Binding Phone}" Keyboard="Telephone" />
+                <m:PickerField Title="Your Grade" SelectedIndex="{Binding Grade}" ItemsSource="{Binding GradeChosen}" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static i:MaterialRegular.Expand_circle_down}}"/>
+                <m:TextField Title="Your Account" Text="{Binding Acc}" />
+                <m:TextField Title="Your Password" Text="{Binding Pwd}" IsPassword="True" />
+                <m:TextField Title="Confirm Password" Text="{Binding PwdConfirm}" IsPassword="True" />
 
                 <Button Text="Log In"
                         Command="{Binding SignUpOnCommand}"
@@ -56,4 +57,4 @@
         </Grid>
     </ScrollView>
 
-</uranium:UraniumContentPage>
+</u:UraniumContentPage>

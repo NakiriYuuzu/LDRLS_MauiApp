@@ -49,7 +49,7 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
             
             Clear();
             SetLoading(false);
-            await RouteService.GoToAsync(Routes.HomePage);
+            await RouteService.GoToAsyncResetStack(Routes.HomePage);
         }
         catch (ApiException e)
         {

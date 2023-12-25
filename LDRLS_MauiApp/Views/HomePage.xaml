@@ -5,8 +5,10 @@
                     xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
                     xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
                     Title="Home"
-                    x:Class="LDRLS_MauiApp.Views.HomePage">
+                    x:DataType="viewModel:HomeViewModel"
+                    x:Class="LDRLS_MauiApp.Views.HomePage"
+                    xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
     
-    <Button Text="This Is Home Page." StyleClass="TextButton" />
+    <Button Text="This Is Home Page." StyleClass="TextButton" Command="{Binding LogoutOnCommand}" />
 
 </u:UraniumContentPage>

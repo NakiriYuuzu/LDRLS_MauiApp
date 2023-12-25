@@ -14,27 +14,25 @@ public partial class SignUpViewModel(ApiService apiService, IDialogService dialo
     [ObservableProperty] private string _name = string.Empty;
     [ObservableProperty] private string _email = string.Empty;
     [ObservableProperty] private string _phone = string.Empty;
-    [ObservableProperty] private string _grade = string.Empty;
+    [ObservableProperty] private string[] _gradeChosen = ["BACHELOR", "MASTER"];
+    [ObservableProperty] private int _grade;
     [ObservableProperty] private string _acc = string.Empty;
     [ObservableProperty] private string _pwd = string.Empty;
     [ObservableProperty] private string _pwdConfirm = string.Empty;
     [ObservableProperty] private bool _isLoading;
     [ObservableProperty] private bool _isEnabled = true;
 
-    [ObservableProperty] private String[] _gradeSelection;
-    
     private void SetLoading(bool isLoading)
     {
         IsLoading = isLoading;
         IsEnabled = !isLoading;
     }
-    
+
     private void Clear()
     {
         Name = string.Empty;
         Email = string.Empty;
         Phone = string.Empty;
-        Grade = string.Empty;
         Acc = string.Empty;
         Pwd = string.Empty;
         PwdConfirm = string.Empty;
@@ -42,20 +40,30 @@ public partial class SignUpViewModel(ApiService apiService, IDialogService dialo
 
     private string Validate()
     {
+        Console.WriteLine(Grade);
         if (String.IsNullOrEmpty(Name) || String.IsNullOrEmpty(Email) || String.IsNullOrEmpty(Phone) ||
-            String.IsNullOrEmpty(Grade) || String.IsNullOrEmpty(Acc) || String.IsNullOrEmpty(Pwd) ||
+            String.IsNullOrEmpty(Acc) || String.IsNullOrEmpty(Pwd) ||
             String.IsNullOrEmpty(PwdConfirm))
         {
             return "Please fill in all the blanks";
         }
+
+        if (Grade != 0 || Grade != 1)
+        {
+            return "Please choose your grade";
+            
+        }
+        
         if (Phone.Length != 10)
         {
             return "Phone number must be 10 digits";
         }
+
         if (!Pwd.Equals(PwdConfirm))
         {
             return "Password and Confirm Password are not the same";
         }
+
         return string.Empty;
     }
 
@@ -69,6 +77,7 @@ public partial class SignUpViewModel(ApiService apiService, IDialogService dialo
             await dialogService.ConfirmAsync("Sign Up Failed", Validate());
             return;
         }
+
         try
         {
             var request = new UserRequest
@@ -76,7 +85,7 @@ public partial class SignUpViewModel(ApiService apiService, IDialogService dialo
                 Name = Name,
                 Email = Email,
                 Phone = Phone,
-                Grade = Grade.Length,
+                Grade = Grade,
                 Account = Acc,
                 Password = Pwd
             };
