@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+             Title="Add Room"
+             x:DataType="viewModel:AddOrEditViewModel"
+             x:Class="LDRLS_MauiApp.Views.RoomAddOrEditPage"
+             xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
+    
+    <u:UraniumContentPage.ToolbarItems>
+        <ToolbarItem Text="Back" Command="{Binding BackToRootCommand}" />
+    </u:UraniumContentPage.ToolbarItems>
+    
+    <ScrollView>
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <!-- 將 ActivityIndicator 放置在一個能覆蓋整個 Grid 的新層中 -->
+            <ActivityIndicator Grid.Row="0" Grid.RowSpan="2"
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               ZIndex="1000"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
+                <m:TextField Title="Room Name" Text="{Binding Name}" />
+                <m:TextField Title="Room Size" Text="{Binding RoomSize}" Keyboard="Numeric" />
+                <m:TextField Title="Room Type" Text="{Binding RoomType}" />
+                <m:PickerField Title="Room Access" SelectedIndex="{Binding Grade}" ItemsSource="{Binding GradeChosen}" Icon="{FontImageSource FontFamily=MaterialRegular, Glyph={x:Static i:MaterialRegular.Expand_circle_down}}"/>
+
+                <Button Text="Add"
+                        Command="{Binding AddOnCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        StyleClass="FilledButton"
+                        Margin="0,10,0,0" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+    
+</u:UraniumContentPage>

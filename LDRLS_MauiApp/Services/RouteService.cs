@@ -16,7 +16,7 @@ public static class RouteService
     {
         try
         {
-            await Shell.Current.GoToAsync(route.ToString(), true);
+            await Shell.Current.GoToAsync($"/{route.ToString()}", true);
         }
         catch (Exception ex)
         {

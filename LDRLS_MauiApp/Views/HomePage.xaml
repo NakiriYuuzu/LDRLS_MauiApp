@@ -8,8 +8,9 @@
                       Title="Home"
                       x:DataType="viewModel:HomeViewModel"
                       x:Class="LDRLS_MauiApp.Views.HomePage"
-                      xmlns:templates="clr-namespace:LDRLS_MauiApp.Views.components"
-                      xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
+                      xmlns:view="clr-namespace:LDRLS_MauiApp.Views"
+                      xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
+                      xmlns:templates="clr-namespace:LDRLS_MauiApp.Views.components">
 
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, *">
@@ -21,6 +22,7 @@
                 </m:TextField>
                 <Button Grid.Column="1"
                         StyleClass="TextButton"
+                        Command="{Binding NoImplementedOnCommand}"
                         ImageSource="{ FontImageSource Glyph={Static i:MaterialRound.Search}, FontFamily=MaterialRound }"
                         Margin="16, 0, 0, 0" />
             </Grid>
@@ -59,7 +61,14 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <templates:BigCardItem />
+                            <templates:BigCardItem>
+                                <templates:BigCardItem.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Path=NoImplementedOnCommand, 
+                                        Source={RelativeSource AncestorType={x:Type viewModel:HomeViewModel}}}"
+                                        CommandParameter="{Binding}"/>
+                                </templates:BigCardItem.GestureRecognizers>
+                            </templates:BigCardItem>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

@@ -7,11 +7,13 @@
                       xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
                       Title="Rooms"
                       x:Class="LDRLS_MauiApp.Views.RoomListPage"
+                      x:DataType="viewModel:RoomListViewModel"
                       xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
                       xmlns:components="clr-namespace:LDRLS_MauiApp.Views.components">
     
     <u:UraniumContentPage.ToolbarItems>
         <ToolbarItem
+            Command="{Binding AddRoomOnCommand}"
             Order="Secondary"
             Text="Add Room" />
     </u:UraniumContentPage.ToolbarItems>
@@ -26,7 +28,14 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <components:BigCardItem />
+                        <components:BigCardItem>
+                            <components:BigCardItem.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Path=NoImplementOnCommand, 
+                                    Source={RelativeSource AncestorType={x:Type viewModel:RoomListViewModel}}}"
+                                    CommandParameter="{Binding}"/>
+                            </components:BigCardItem.GestureRecognizers>
+                        </components:BigCardItem>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -5,7 +5,9 @@ public enum Routes
     LoginPage,
     SignUpPage,
     HomePage,
+    LendingPage,
     LendingStatusPage,
     SettingPage,
     RoomListPage,
+    RoomAddOrEditPage
 }

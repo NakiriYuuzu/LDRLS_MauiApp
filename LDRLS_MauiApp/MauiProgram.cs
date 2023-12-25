@@ -17,7 +17,6 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
             .UseUraniumUI()
-            .UseUraniumUIBlurs()
             .UseUraniumUIMaterial()
             .ConfigureFonts(fonts =>
             {
@@ -42,6 +41,10 @@ public static class MauiProgram
         builder.Services.AddTransient<SignUpViewModel>();
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<SettingViewModel>();
+        builder.Services.AddTransient<LendingViewModel>();
+        builder.Services.AddTransient<LendingStatusViewModel>();
+        builder.Services.AddTransient<AddOrEditViewModel>();
+        builder.Services.AddTransient<RoomListViewModel>();
 
         var app = builder.Build();
         ServiceHelper.Initialize(app.Services);
