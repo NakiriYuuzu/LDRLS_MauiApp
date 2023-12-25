@@ -24,12 +24,12 @@ public class ApiService(HttpClient client)
 
     private async Task<T> ParseResponseAsync<T>(HttpResponseMessage response)
     {
+        var body = await response.Content.ReadAsStringAsync();   
         switch (response.StatusCode)
         {
             case HttpStatusCode.OK:
             {
-                var body = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<T>(body, _serializerSettings) ?? throw new InvalidOperationException();
+                return JsonConvert.DeserializeObject<T>(body) ?? throw new Exception("Error for convert JSON.");
             }
             case HttpStatusCode.Unauthorized: // TODO: Fix this
             {
@@ -37,14 +37,12 @@ public class ApiService(HttpClient client)
             }
             case HttpStatusCode.BadRequest:
             {
-                var body = await response.Content.ReadAsStringAsync();
                 var badRequestResponse = JsonConvert.DeserializeObject<Response>(body, _serializerSettings);
                 if (badRequestResponse != null) throw new ApiException(badRequestResponse, "404");
                 throw new InvalidOperationException();
             }
             case HttpStatusCode.Conflict:
             {
-                var body = await response.Content.ReadAsStringAsync();
                 var conflictResponse = JsonConvert.DeserializeObject<Response>(body, _serializerSettings);
                 if (conflictResponse != null) throw new ApiException(conflictResponse, "409");
                 throw new InvalidOperationException();
@@ -59,8 +57,8 @@ public class ApiService(HttpClient client)
         try
         {
             await SetBearerTokenAsync();
-            var response = await client.GetAsync(uri);
-            return await ParseResponseAsync<T>(response);
+            var response = await client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<T>(response) ?? throw new Exception("Error for convert JSON.");
         }
         catch (Exception e)
         {
@@ -74,8 +72,8 @@ public class ApiService(HttpClient client)
         try
         {
             await SetBearerTokenAsync();
-            var response = await client.GetAsync($"{uri}/{param}");
-            return await ParseResponseAsync<T>(response);
+            var response = await client.GetStringAsync($"{uri}/{param}");
+            return JsonConvert.DeserializeObject<T>(response) ?? throw new Exception("Error for convert JSON.");
         }
         catch (Exception e)
         {

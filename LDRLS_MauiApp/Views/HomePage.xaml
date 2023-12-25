@@ -8,25 +8,64 @@
                       Title="Home"
                       x:DataType="viewModel:HomeViewModel"
                       x:Class="LDRLS_MauiApp.Views.HomePage"
+                      xmlns:templates="clr-namespace:LDRLS_MauiApp.Views.components"
                       xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
-    
-    <Grid RowDefinitions="Auto, 1.5*, 3*">
-        <Grid ColumnDefinitions="*, Auto" Grid.Row="0" Margin="16, 16">
-            <m:TextField Grid.Column="0"
-                Title="Search">
-                <m:TextField.Icon>
-                    <FontImageSource FontFamily="MaterialRound" Glyph="{x:Static i:MaterialRound.Search}" />
-                </m:TextField.Icon>
-            </m:TextField>
-            <Button Grid.Column="1"
-                StyleClass="TextButton"
-                ImageSource="{ FontImageSource Glyph={Static i:MaterialRound.Search}, FontFamily=MaterialRound }"
-                Margin="16, 0, 0, 0" />
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, *">
+            <Grid ColumnDefinitions="*, Auto" Grid.Row="0" Margin="16, 16">
+                <m:TextField Grid.Column="0"
+                             Title="Search">
+                    <m:TextField.Icon>
+                        <FontImageSource FontFamily="MaterialRound" Glyph="{x:Static i:MaterialRound.Search}" />
+                    </m:TextField.Icon>
+                </m:TextField>
+                <Button Grid.Column="1"
+                        StyleClass="TextButton"
+                        ImageSource="{ FontImageSource Glyph={Static i:MaterialRound.Search}, FontFamily=MaterialRound }"
+                        Margin="16, 0, 0, 0" />
+            </Grid>
+
+            <VerticalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="16, 16 ">
+                <Label
+                    Text="Popular"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="0, 0, 0, 16" />
+                <CollectionView ItemsSource="{Binding Rooms}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            ItemSpacing="8"
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:CardItem />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2" Margin="12, 12">
+                <Label
+                    Text="Categories"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="0, 0, 0, 16" />
+                <CollectionView ItemsSource="{Binding Rooms}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            ItemSpacing="8"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:BigCardItem />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
         </Grid>
-        
-        <Border Grid.Row="1" BackgroundColor="Red">
-            
-        </Border>
-    </Grid>
+    </ScrollView>
 
 </u:UraniumContentPage>

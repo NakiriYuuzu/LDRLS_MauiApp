@@ -2,16 +2,14 @@ namespace LDRLS_MauiApp.Properties;
 
 public struct DefaultConfig
 {
-    // Routes
-    internal const string ParametersKey = "parameters";
-    
     // Storage
     internal const string StorageName = "auth_name";
     internal const string StorageToken = "auth_token";
     internal const string StorageIdentity = "auth_identity";
     
     // Api
-    private const string ApiUrl = "http://192.168.31.74:8080/";
+    private const string ApiUrl = "https://b3e8-1-165-71-146.ngrok-free.app/";
     internal const string ApiLogin = $"{ApiUrl}login";
     internal const string ApiUser = $"{ApiUrl}user";
+    internal const string ApiRoom = $"{ApiUrl}room";
 }
