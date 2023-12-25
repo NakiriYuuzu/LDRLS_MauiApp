@@ -8,47 +8,74 @@
                       Title="Settings"
                       x:DataType="viewModel:SettingViewModel"
                       x:Class="LDRLS_MauiApp.Views.SettingPage">
-    <VerticalStackLayout Spacing="25"
-                         Padding="20"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Fill">
-
-        <!-- Menu list items -->
-        <Frame BackgroundColor="#2C2C2E"
-               CornerRadius="10"
-               Padding="12">
-            <VerticalStackLayout Spacing="12">
-                <Label Text="个人资料"
-                       TextColor="White"
-                       FontSize="20">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Room Setting"
-                       TextColor="White"
-                       IsVisible="{Binding Identity}"
-                       FontSize="20">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Privacy Policy"
-                       TextColor="White"
-                       FontSize="20" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </VerticalStackLayout>
+    
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          Padding="20"
+          RowSpacing="10"
+          ColumnSpacing="0"
+          HorizontalOptions="Fill"
+          VerticalOptions="Start">
+        
+        <Frame Grid.Row="0" Margin="10"
+               BorderColor="Black"
+               CornerRadius="100"
+               HeightRequest="200"
+               WidthRequest="200"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Padding="3">
+            <Image Source="appicon.jpg"
+                   Aspect="AspectFill"
+                   Margin="-20"
+                   HeightRequest="100"
+                   WidthRequest="100" />
         </Frame>
-
-        <!-- Bottom button -->
-        <Button Text="退出登录"
+        
+        <Label Grid.Row="1"
+               Text="Andrea Davis"
+               FontSize="35"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0,10"/>
+        
+        <Button Grid.Row="2"
+                Text="Edit Profile"
+                WidthRequest="300"
                 FontSize="18"
-                Command="{Binding LogoutOnCommand}"
-                StyleClass="FilledButton"
-                VerticalOptions="End"
-                Margin="0, 16" />
-    </VerticalStackLayout>
+                CornerRadius="6"
+                BorderColor="#CCCCCC"
+                BorderWidth="1"
+                BackgroundColor="#1C1B1F"
+                TextColor="#CCCCCC"
+                HorizontalOptions="Fill"/>
+
+        <Button Grid.Row="3"
+                Text="Account Settings"
+                WidthRequest="300"
+                FontSize="18"
+                CornerRadius="6"
+                BorderColor="#CCCCCC"
+                BorderWidth="1"
+                BackgroundColor="#1C1B1F"
+                TextColor="#CCCCCC"
+                ImageSource="https://placehold.co/24x24"
+                HorizontalOptions="Fill"/>
+
+        <Button Grid.Row="4"
+                StyleClass="OutlineButton"
+                WidthRequest="150"
+                HeightRequest="50"
+                Text="Log Out"
+                FontSize="18"
+                CornerRadius="10"
+                BorderColor="#CCCCCC"
+                BorderWidth="1"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                HorizontalOptions="Fill"/>
+
+        
+    </Grid>
+
 </u:UraniumContentPage>
