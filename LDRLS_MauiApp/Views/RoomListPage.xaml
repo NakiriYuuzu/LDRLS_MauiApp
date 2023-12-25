@@ -4,9 +4,33 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
                       xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                      xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+                      Title="Rooms"
+                      x:Class="LDRLS_MauiApp.Views.RoomListPage"
                       xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
-                      x:Class="LDRLS_MauiApp.Views.RoomListPage">
+                      xmlns:components="clr-namespace:LDRLS_MauiApp.Views.components">
     
+    <u:UraniumContentPage.ToolbarItems>
+        <ToolbarItem
+            Order="Secondary"
+            Text="Add Room" />
+    </u:UraniumContentPage.ToolbarItems>
     
-    
+    <ScrollView>
+        <VerticalStackLayout>
+            <CollectionView ItemsSource="{Binding Rooms}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="8"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <components:BigCardItem />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
 </u:UraniumContentPage>

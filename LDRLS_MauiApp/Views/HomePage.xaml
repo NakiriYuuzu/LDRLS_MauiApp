@@ -14,8 +14,7 @@
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, *">
             <Grid ColumnDefinitions="*, Auto" Grid.Row="0" Margin="16, 16">
-                <m:TextField Grid.Column="0"
-                             Title="Search">
+                <m:TextField Grid.Column="0" Title="Search">
                     <m:TextField.Icon>
                         <FontImageSource FontFamily="MaterialRound" Glyph="{x:Static i:MaterialRound.Search}" />
                     </m:TextField.Icon>

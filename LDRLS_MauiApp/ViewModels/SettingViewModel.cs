@@ -10,12 +10,16 @@ namespace LDRLS_MauiApp.ViewModels;
 public partial class SettingViewModel(IDialogService dialogService) : ObservableObject
 {
     [ObservableProperty] private bool _identity;
+    [ObservableProperty] private string _user = String.Empty;
 
     public void UpdateIdentity()
     {
         var identity = Task.Run(async () => await SecureStorage.GetAsync(DefaultConfig.StorageIdentity));
+        var user = Task.Run(async () => await SecureStorage.GetAsync(DefaultConfig.StorageName));
         Console.WriteLine("Identity: " + identity.Result);
+        Console.WriteLine("User: " + user.Result);
         Identity = identity.Result == "0";
+        User = $"{user.Result}";
     }
 
     [RelayCommand]
