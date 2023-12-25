@@ -1,14 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-                    xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-                    Title="Home"
-                    x:DataType="viewModel:HomeViewModel"
-                    x:Class="LDRLS_MauiApp.Views.HomePage"
-                    xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                      xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                      xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+                      Title="Home"
+                      x:DataType="viewModel:HomeViewModel"
+                      x:Class="LDRLS_MauiApp.Views.HomePage"
+                      xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
     
-    <Button Text="This Is Home Page." StyleClass="TextButton" Command="{Binding LogoutOnCommand}" />
+    <Grid RowDefinitions="Auto, 1.5*, 3*">
+        <Grid ColumnDefinitions="*, Auto" Grid.Row="0" Margin="16, 16">
+            <m:TextField Grid.Column="0"
+                Title="Search">
+                <m:TextField.Icon>
+                    <FontImageSource FontFamily="MaterialRound" Glyph="{x:Static i:MaterialRound.Search}" />
+                </m:TextField.Icon>
+            </m:TextField>
+            <Button Grid.Column="1"
+                StyleClass="TextButton"
+                ImageSource="{ FontImageSource Glyph={Static i:MaterialRound.Search}, FontFamily=MaterialRound }"
+                Margin="16, 0, 0, 0" />
+        </Grid>
+        
+        <Border Grid.Row="1" BackgroundColor="Red">
+            
+        </Border>
+    </Grid>
 
 </u:UraniumContentPage>

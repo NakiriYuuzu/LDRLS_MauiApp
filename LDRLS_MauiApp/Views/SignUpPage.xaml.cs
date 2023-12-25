@@ -10,9 +10,6 @@ public partial class SignUpPage : UraniumContentPage
     public SignUpPage()
     {
         InitializeComponent();
-        BindingContext = new SignUpViewModel(
-            ServiceHelper.GetService<ApiService>(),
-            ServiceHelper.GetService<CommunityToolkitDialogService>()
-        );
+        BindingContext = ServiceHelper.GetService<SignUpViewModel>();
     }
 }

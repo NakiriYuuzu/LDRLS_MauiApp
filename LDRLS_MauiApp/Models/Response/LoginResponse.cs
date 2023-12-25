@@ -12,4 +12,6 @@ public class LoginResponse
 public class LoginResult
 {
     [JsonProperty("token")] public string Token { get; set; } = string.Empty;
+    [JsonProperty("identity")] public int Identity { get; set; }
+    [JsonProperty("name")] public string Name { get; set; } = string.Empty;
 }

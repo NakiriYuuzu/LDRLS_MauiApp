@@ -67,13 +67,10 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="SimpleToolkit.Core" Version="4.0.0" />
         <PackageReference Include="SimpleToolkit.SimpleShell" Version="4.0.0" />
+        <PackageReference Include="UraniumUI.Blurs" Version="2.7.3" />
         <PackageReference Include="UraniumUI.Dialogs.CommunityToolkit" Version="2.7.3" />
         <PackageReference Include="UraniumUI.Icons.MaterialIcons" Version="2.7.3" />
         <PackageReference Include="UraniumUI.Material" Version="2.7.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Views\components\" />
     </ItemGroup>
 
 </Project>

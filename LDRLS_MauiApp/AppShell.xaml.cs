@@ -1,6 +1,4 @@
 ﻿using LDRLS_MauiApp.Models;
-using LDRLS_MauiApp.Models.Response;
-using LDRLS_MauiApp.Properties;
 using LDRLS_MauiApp.Services;
 using LDRLS_MauiApp.Views;
 
@@ -17,5 +15,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(Routes.LoginPage.ToString(), typeof(LoginPage));
         Routing.RegisterRoute(Routes.SignUpPage.ToString(), typeof(SignUpPage));
         Routing.RegisterRoute(Routes.HomePage.ToString(), typeof(HomePage));
+        Routing.RegisterRoute(Routes.LendingStatusPage.ToString(), typeof(LendingStatusPage));
+        Routing.RegisterRoute(Routes.SettingPage.ToString(), typeof(SettingPage));
+        Routing.RegisterRoute(Routes.RoomListPage.ToString(), typeof(RoomListPage));
     }
 }

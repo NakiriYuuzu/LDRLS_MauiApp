@@ -10,9 +10,6 @@ public partial class LoginPage : UraniumContentPage
     public LoginPage()
     {
         InitializeComponent();
-        BindingContext = new LoginViewModel(
-            ServiceHelper.GetService<ApiService>(),
-            ServiceHelper.GetService<CommunityToolkitDialogService>()
-        );
+        BindingContext = ServiceHelper.GetService<LoginViewModel>();
     }
 }

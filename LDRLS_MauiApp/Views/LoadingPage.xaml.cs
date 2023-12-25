@@ -25,10 +25,11 @@ public partial class LoadingPage : UraniumContentPage
     private async Task<bool> IsUserLoggedIn()
     {
         var token = await SecureStorage.GetAsync(DefaultConfig.StorageToken);
-        Console.WriteLine(token);
         if (token == null) return false;
 
         var response = await _apiService.GetAsync<UserResponse>(DefaultConfig.ApiLogin);
+        await SecureStorage.SetAsync(DefaultConfig.StorageName, response.Result.Name);
+        await SecureStorage.SetAsync(DefaultConfig.StorageIdentity, $"{response.Result.Identity}");
         return response.Success;
     }
 }

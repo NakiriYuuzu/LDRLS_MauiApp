@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                      xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                      xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
+                      Title="Settings"
+                      x:DataType="viewModel:SettingViewModel"
+                      x:Class="LDRLS_MauiApp.Views.SettingPage">
+    <VerticalStackLayout Spacing="25"
+                         Padding="20"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Fill">
+
+        <!-- Menu list items -->
+        <Frame BackgroundColor="#2C2C2E"
+               CornerRadius="10"
+               Padding="12">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="个人资料"
+                       TextColor="White"
+                       FontSize="20">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Room Setting"
+                       TextColor="White"
+                       IsVisible="{Binding Identity}"
+                       FontSize="20">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Privacy Policy"
+                       TextColor="White"
+                       FontSize="20" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NoImplementedOnCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Bottom button -->
+        <Button Text="退出登录"
+                FontSize="18"
+                Command="{Binding LogoutOnCommand}"
+                StyleClass="FilledButton"
+                VerticalOptions="End"
+                Margin="0, 16" />
+    </VerticalStackLayout>
+</u:UraniumContentPage>

@@ -2,10 +2,10 @@
 
 ## Features
 - [x] Login
-- [ ] Register
+- [x] Register
 - [ ] Forgot Password
 - [ ] Home
+- [ ] Lending
 - [ ] Profile
 - [ ] Settings
-- [ ] About
 - [ ] Logout

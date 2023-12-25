@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Maui;
 using LDRLS_MauiApp.Services;
+using LDRLS_MauiApp.ViewModels;
 using Microsoft.Extensions.Logging;
 using UraniumUI;
+using UraniumUI.Dialogs;
 using UraniumUI.Dialogs.CommunityToolkit;
 
 namespace LDRLS_MauiApp;
@@ -15,6 +17,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
             .UseUraniumUI()
+            .UseUraniumUIBlurs()
             .UseUraniumUIMaterial()
             .ConfigureFonts(fonts =>
             {
@@ -32,9 +35,13 @@ public static class MauiProgram
         // Dependency Injection
         builder.Services.AddSingleton<AppShell>();
         builder.Services.AddSingleton<HttpClient>();
-        builder.Services.AddSingleton<CommunityToolkitDialogService>();
-        
-        builder.Services.AddTransient<ApiService>();
+        builder.Services.AddSingleton<ApiService>();
+        builder.Services.AddSingleton<IDialogService, CommunityToolkitDialogService>();
+
+        builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<SignUpViewModel>();
+        builder.Services.AddTransient<HomeViewModel>();
+        builder.Services.AddTransient<SettingViewModel>();
 
         var app = builder.Build();
         ServiceHelper.Initialize(app.Services);

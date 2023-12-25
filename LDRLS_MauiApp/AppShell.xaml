@@ -3,9 +3,16 @@
     x:Class="LDRLS_MauiApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     xmlns:local="clr-namespace:LDRLS_MauiApp.Views"
     FlyoutBehavior="Disabled"
     Background="{StaticResource PrimaryBrush}">
+
+    <!-- <ToolbarItem> -->
+    <!--     <ToolbarItem.Effects> -->
+    <!--         <u:BlurEffect AccentOpacity="0.8" /> -->
+    <!--     </ToolbarItem.Effects> -->
+    <!-- </ToolbarItem> -->
     
     <ShellContent
         Title="Loading"
@@ -36,12 +43,19 @@
                 Route="HomePage" />
 
         </Tab>
-        <Tab Title="Settings" Icon="home_icon.svg">
+        <Tab Title="Lending" Icon="lending_icon.svg">
             <ShellContent
-                Icon="home_icon.svg"
+                Icon="lending_icon.svg"
+                Title="Lending Status"
+                ContentTemplate="{DataTemplate local:LendingStatusPage}"
+                Route="LendingListPage" />
+        </Tab>
+        <Tab Title="Settings" Icon="setting_icon.svg">
+            <ShellContent
+                Icon="setting_icon.svg"
                 Title="Settings"
-                ContentTemplate="{DataTemplate local:HomePage}"
-                Route="settings" />
+                ContentTemplate="{DataTemplate local:SettingPage}"
+                Route="SettingPage" />
         </Tab>
     </TabBar>
 </Shell>

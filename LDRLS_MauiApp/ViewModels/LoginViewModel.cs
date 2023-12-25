@@ -45,7 +45,12 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
         {
             var request = new LoginRequest { Account = Acc, Password = Pwd };
             var result = await apiService.PostAsync<LoginResponse>(DefaultConfig.ApiLogin, request);
-            if (result.Success) await SecureStorage.SetAsync(DefaultConfig.StorageToken, result.Result.Token);
+            if (result.Success)
+            {
+                await SecureStorage.SetAsync(DefaultConfig.StorageToken, result.Result.Name);
+                await SecureStorage.SetAsync(DefaultConfig.StorageToken, result.Result.Token);
+                await SecureStorage.SetAsync(DefaultConfig.StorageIdentity, $"{result.Result.Identity}");
+            }
             
             Clear();
             SetLoading(false);
