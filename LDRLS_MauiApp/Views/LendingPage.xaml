@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <u:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-             xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
-             x:Class="LDRLS_MauiApp.Views.LendingPage">
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:u="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                      xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+                      xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
+                      Title="Lending Page"
+                      x:DataType="viewModel:LendingViewModel"
+                      x:Class="LDRLS_MauiApp.Views.LendingPage"
+                      xmlns:view="clr-namespace:LDRLS_MauiApp.Views"
+                      xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels">
     
-    
-
+    <ScrollView>
+        <Grid RowDefinitions="Auto, *, *">
+            <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="16, 16">
+                <m:DatePickerField Grid.Column="0"
+                    Title="Pick a Date*" 
+                    Date="{Binding Date}"
+                    Icon="{FontImageSource FontFamily=MaterialRound, Glyph={x:Static i:MaterialRound.Calendar_month}}" />
+                <Button Grid.Column="1"
+                        StyleClass="TextButton"
+                        Command="{Binding DatePickerCommand}"
+                        ImageSource="{ FontImageSource Glyph={Static i:MaterialRound.Search}, FontFamily=MaterialRound }"
+                        Margin="16, 0, 0, 0" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <m:DataGrid 
+                    ItemsSource="{Binding Items}" 
+                    SelectedItems="{Binding SelectedItems}" 
+                    HorizontalOptions="Fill"
+                    Margin="16, 16">
+                    <m:DataGrid.EmptyView>
+                        <VerticalStackLayout Margin="80,20">
+                            <Image
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Source="{FontImageSource FontFamily=MaterialOutlined, Glyph={x:Static i:MaterialOutlined.Backup_table}, Color={AppThemeBinding Light={StaticResource OnSurface}, Dark={StaticResource OnSurfaceDark}}}"/>
+                            <Label Text="No data available..." HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </m:DataGrid.EmptyView>
+                    <m:DataGrid.Columns>
+                        <m:DataGridSelectionColumn />
+                        <m:DataGridColumn Binding="{Binding Time}" Title="Time" />
+                        <m:DataGridColumn Binding="{Binding IsAvailable}" Title="IsAvailable" />
+                    </m:DataGrid.Columns>
+                </m:DataGrid>
+            </Grid>
+            <Grid Grid.Row="2" Margin="16">
+                <Button Text="Send" Command="{Binding SendCommand}" />
+            </Grid>
+        </Grid>
+    </ScrollView>
 </u:UraniumContentPage>

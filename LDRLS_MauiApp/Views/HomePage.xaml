@@ -41,7 +41,14 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <templates:CardItem />
+                            <templates:CardItem>
+                                <templates:CardItem.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Path=GoToLendingCommand, 
+                                        Source={RelativeSource AncestorType={x:Type viewModel:HomeViewModel}}}"
+                                        CommandParameter="{Binding}"/>
+                                </templates:CardItem.GestureRecognizers>
+                            </templates:CardItem>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

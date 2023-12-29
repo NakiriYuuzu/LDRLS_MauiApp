@@ -6,40 +6,20 @@
                       xmlns:m="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
                       xmlns:i="clr-namespace:UraniumUI.Icons.MaterialIcons;assembly=UraniumUI.Icons.MaterialIcons"
                       x:Class="LDRLS_MauiApp.Views.LendingStatusPage"
+                      x:DataType="viewModel:LendingStatusViewModel"
                       xmlns:viewModel="clr-namespace:LDRLS_MauiApp.ViewModels"
                       xmlns:components="clr-namespace:LDRLS_MauiApp.Views.components">
     <ContentPage.Content>
 
         <ScrollView>
-            <Grid RowDefinitions="Auto, Auto, *">
-
-                <VerticalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="16, 16 ">
-                    <Label
-                        Text="Reservation Rooms"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        Margin="0, 0, 0, 16" />
-                    <CollectionView ItemsSource="{Binding Rooms}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout
-                                ItemSpacing="8"
-                                Orientation="Horizontal" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <components:CardItem />
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-
+            <Grid RowDefinitions="*">
                 <VerticalStackLayout Grid.Row="2" Margin="12, 12">
                     <Label
-                        Text="Reservation Before"
+                        Text="Reservation Status"
                         FontSize="20"
                         FontAttributes="Bold"
                         Margin="0, 0, 0, 16" />
-                    <CollectionView ItemsSource="{Binding Rooms}">
+                    <CollectionView ItemsSource="{Binding Lending}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout
                                 ItemSpacing="8"
@@ -47,7 +27,7 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <components:BigCardItem />
+                                <components:BigCardLendingItem />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

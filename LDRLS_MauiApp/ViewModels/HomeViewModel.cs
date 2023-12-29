@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using LDRLS_MauiApp.Models;
 using LDRLS_MauiApp.Models.Response;
 using LDRLS_MauiApp.Properties;
+using LDRLS_MauiApp.Services;
+using LDRLS_MauiApp.Views;
 using Newtonsoft.Json;
 using UraniumUI.Dialogs;
 
@@ -53,5 +55,11 @@ public partial class HomeViewModel(IDialogService dialogService, HttpClient http
     private async Task NoImplementedOn()
     {
         await dialogService.ConfirmAsync("Error", "Not Implemented yet.");
+    }
+    
+    [RelayCommand]
+    private async Task GoToLending(Room selectedRoom)
+    {
+        await Shell.Current.Navigation.PushAsync(new LendingPage(selectedRoom));
     }
 }

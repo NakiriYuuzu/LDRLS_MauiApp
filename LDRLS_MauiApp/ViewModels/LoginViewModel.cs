@@ -32,6 +32,7 @@ public partial class LoginViewModel(ApiService apiService, IDialogService dialog
     [RelayCommand]
     private async Task LoginOn()
     {
+        Console.WriteLine($"{DefaultConfig.ApiLogin}");
         SetLoading(true);
         if (String.IsNullOrEmpty(Acc) && String.IsNullOrEmpty(Pwd))
         {
